@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <title>Vending Machine</title>
+</head>
+<style>
+/* ここからCSSを記述してください。 */
+.pink-bg{
+    background-color: #ffc2da;
+    padding: 3em;
+}
+.adjestImgSize{
+    width: 100%;
+    height: auto;
+    padding: 1em;
+};
+.button-css{
+    width: 100%;
+    padding: 1em;
+}
+/* .visibleImg{
+    width: 100%;
+    height: auto;
+    padding: 1em;
+    visibility: visible;
+};
+.name-price-hidden{
+    visibility: hidden;
+} */
+</style>
+<body>
+
+    <div id= "vending-machine-div" class="container vh-100 justify-content-center align-items-center d-flex flex-column"> 
+    <div class="d-flex align-items-center col-md-7 col-10 m-1">
+        <div class="d-flex col-12 pink-bg">
+            <!-- left -->
+            <div id="leftDiv" class="col-6"></div>
+            <!-- right -->
+            <div id="rightDiv" class="col-6"></div>
+        </div>
+    </div>
+    </div>
+</body>
+
+<script>
+const vendingMachineDiv = document.getElementById("vending-machine-div");
+const leftDiv = document.getElementById("leftDiv");
+const rightDiv = document.getElementById("rightDiv");
+//name
+let nameDiv = document.createElement("p");
+// nameDiv.innerHTML ="name: ";
+//price
+let priceDiv = document.createElement("p");
+//priceDiv.classList.add("");
+// priceDiv.innerHTML = "price: ";
+rightDiv.append(nameDiv);
+rightDiv.append(priceDiv);
+//img
+let animalImg = document.createElement("img");
+//initial->disable:none;
+animalImg.classList.add("adjestImgSize");
+//animalImg.src = "";
+
+function createAnimalCard(animalObject){
+leftDiv.append(animalImg);
+//button
+//let padding-for-buttonDiv = document.createElement("div")
+let buttonDiv = document.createElement("button");
+buttonDiv.classList.add("button-css");
+buttonDiv.innerHTML = animalObject.index;
+rightDiv.append(buttonDiv);
+//button click action ()をつけると、処理の段階で全て実行されてしまうから注意
+buttonDiv.addEventListener("click", buttonClicked);
+function buttonClicked(){
+nameDiv.innerHTML ="name: "+animalArray[buttonDiv.innerHTML-1].name;
+priceDiv.innerHTML = "price: $"+animalArray[buttonDiv.innerHTML-1].price;
+animalImg.src = animalArray[buttonDiv.innerHTML-1].img;
+
+}
+}
+
+class Animal{
+    constructor(name,price,img,index){
+        this.name = name;
+        this.price = price;
+        this.img = img;
+        this.index = index;
+    }
+}
+
+let animal1 = new Animal("lion", "100", "https://as2.ftcdn.net/v2/jpg/01/35/97/83/1000_F_135978399_qplk3WPu7JOA63JPCYVy1fb7MI4nefAL.jpg",1);
+let animal2 = new Animal("Elephant", "200", "https://as1.ftcdn.net/v2/jpg/00/43/35/52/1000_F_43355243_xHd8Q1xSZLRndkjwKoLqr9jzN9hp2Daq.jpg",2);
+let animal3 = new Animal("Parot", "300", "https://t3.ftcdn.net/jpg/02/53/70/44/240_F_253704487_pd01SdfnmcNSCOBLhMc7w6ZUYDatDC4t.jpg",3);
+let animal4 = new Animal("lemurs", "400", "https://t4.ftcdn.net/jpg/02/92/39/17/240_F_292391706_Qqqm0nFTGSzMrrTYTmXQkZ8JxMaBkDn1.jpg",4);
+let animal5 = new Animal("Ibis", "500", "https://t4.ftcdn.net/jpg/01/03/07/17/240_F_103071764_Dfaq2NKr62otrvKd0wzdB4YLDhB9PF9T.jpg",5);
+let animal6 = new Animal("Panda", "90", "https://as1.ftcdn.net/v2/jpg/00/43/35/52/1000_F_43355243_xHd8Q1xSZLRndkjwKoLqr9jzN9hp2Daq.jpg",6);
+let animal7 = new Animal("Zebra", "120", "https://as1.ftcdn.net/v2/jpg/00/43/35/52/1000_F_43355243_xHd8Q1xSZLRndkjwKoLqr9jzN9hp2Daq.jpg",7);
+let animal8 = new Animal('Rabbit', 25, 'https://cdn.pixabay.com/photo/2018/06/28/00/11/mara-mammal-3502921__340.jpg',8);
+let animal9 = new Animal('Giraffe', 150, 'https://cdn.pixabay.com/photo/2019/07/27/06/21/giraffe-4366005__340.jpg',9);
+let animal10 = new Animal('Giraffe', 150, 'https://cdn.pixabay.com/photo/2019/07/27/06/21/giraffe-4366005__340.jpg',10);
+let animal11 = new Animal('Raccoon', 45, 'https://cdn.pixabay.com/photo/2018/07/14/17/46/raccoon-3538081__340.jpg',11);
+let animal12 = new Animal('Frog', 5, 'https://cdn.pixabay.com/photo/2016/04/17/16/37/frog-1335022__340.jpg',12);
+let animal13 = new Animal('Iguana', 40, 'https://cdn.pixabay.com/photo/2017/02/05/11/43/iguana-2039719__340.jpg',13);
+let animal14 = new Animal('Adler', 55, 'https://cdn.pixabay.com/photo/2017/10/20/21/45/adler-2872995__340.jpg',14);
+let animal15 = new Animal('Wolf', 60, 'https://cdn.pixabay.com/photo/2019/09/17/14/24/wolf-4483675__340.jpg',15);
+let animal16 = new Animal('Crocodile', 250, 'https://cdn.pixabay.com/photo/2014/01/14/18/31/nile-crocodile-245013__340.jpg',16);
+
+let animalArray = [animal1,animal2,animal3,animal4,animal5,animal6,animal7,animal8,animal9,animal10,animal11,animal12,animal13,animal14,animal5,animal16];
+//profileDiv.append(createEmployeeCard(employee1));
+vendingMachineDiv.append(createAnimalCard(animal1));
+vendingMachineDiv.append(createAnimalCard(animal2));
+vendingMachineDiv.append(createAnimalCard(animal3));
+vendingMachineDiv.append(createAnimalCard(animal4));
+vendingMachineDiv.append(createAnimalCard(animal5));
+vendingMachineDiv.append(createAnimalCard(animal6));
+vendingMachineDiv.append(createAnimalCard(animal7));
+vendingMachineDiv.append(createAnimalCard(animal8));
+vendingMachineDiv.append(createAnimalCard(animal9));
+vendingMachineDiv.append(createAnimalCard(animal10));
+vendingMachineDiv.append(createAnimalCard(animal11));
+vendingMachineDiv.append(createAnimalCard(animal12));
+vendingMachineDiv.append(createAnimalCard(animal13));
+vendingMachineDiv.append(createAnimalCard(animal14));
+vendingMachineDiv.append(createAnimalCard(animal15));
+vendingMachineDiv.append(createAnimalCard(animal16));
+</script>
+</html>
